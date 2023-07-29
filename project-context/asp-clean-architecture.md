@@ -4,36 +4,36 @@
 
 In Clean Architecture, as mentioned in the flutter md, the goal is to create a well-organized and maintainable software system by following separation of concerns and dependency inversion principles. So each layer will have its own responsibilities.
 
-## Core Layer
+## 1. Core Layer
 
 In the core layer of ASP.NET Clean Architecture, we have the following components:
 
-### Entities
+### a-Entities
 
 Entities represent the business objects of the application. This is similar to that in the flutter app. Same objects are now represented as C# classes
 These entities are at the heart of the business logic and are independent of any specific framework or infrastructure concerns.
 
-### Abstraction of Repositories
+### b-Abstraction of Repositories
 
 The core layer defines interfaces for repositories. These repository interfaces act as contracts that specify the operations that can be performed on the entities. The core layer does not contain any implementation details of the repositories, allowing them to be implemented in the infrastructure layer.
 
-### Implementation of Use Cases
+### c-Implementation of Use Cases
 
 Use cases are the application-specific requirements that represent various actions or operations that the application can perform. The core layer contains the implementation of these use cases, which orchestrate the interactions between entities and repositories to achieve specific goals.
 
-## Infrastructure Layer
+## 2. Infrastructure Layer
 
 In the infrastructure layer of ASP.NET Clean Architecture, we have the following components:
 
-### Implementation of Repositories
+### a-Implementation of Repositories
 
 The infrastructure layer contains the actual implementations of the repository interfaces defined in the core layer. These implementations interact with data sources such as databases, web services, or file systems, to retrieve and persist data.
 
-### Services
+### b-Services
 
 The infrastructure layer may also contain various services required for the application, such as email services, logging services (jwt authentication), or external integrations.
 
-## Presentation Layer
+## 3. Presentation Layer
 
 The presentation layer is responsible for handling user interactions and rendering the user interface. In ASP.NET Clean Architecture, we typically use controllers as the entry point to the application. These controllers call the use cases defined in the core layer to process user requests and return appropriate responses.
 
@@ -45,9 +45,9 @@ All call the same API endpoint, but each has its own signup case.
 Lets take the first type of user.
 
 
-### Core Layer
+### 1. Core Layer
 
-#### Abstractions of Repos and Services:
+#### a-Abstractions of Repos and Services:
 
 ``` C#
 public interface GenrateToken{
@@ -68,7 +68,7 @@ public interface UserRepositoryInt{
 These are some of the functions(not all are shown since we don't need them in this example) that the repo should implement.
 It should check for a user with a given email and also create a user with data given.
 
-#### Implementation of the usecase
+#### b-Implementation of the usecase
 
 ``` C#
 public AuthResult signupUser(UserForm data){
@@ -93,11 +93,11 @@ It also has a service(generate token service) which generates the authentication
 other API endpoints.
 
 
-### Infrastructure Layer
+### 2. Infrastructure Layer
 
 This has the implementation for the previously mentioned abstract classes.
 
-### Presentation Layer
+### 3. Presentation Layer
 
 The following function in the controller, first checks for the type of user we need to create then serializes the needed data to
 send to the use case. The controller deals with the failure cases (which here are that the email is already registered), and it returns the suitable
