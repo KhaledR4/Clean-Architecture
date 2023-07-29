@@ -8,16 +8,16 @@ In Clean Architecture, as mentioned in the flutter md, the goal is to create a w
 
 In the core layer of ASP.NET Clean Architecture, we have the following components:
 
-### a-Entities
+#### a-Entities
 
 Entities represent the business objects of the application. This is similar to that in the flutter app. Same objects are now represented as C# classes
 These entities are at the heart of the business logic and are independent of any specific framework or infrastructure concerns.
 
-### b-Abstraction of Repositories
+#### b-Abstraction of Repositories
 
 The core layer defines interfaces for repositories. These repository interfaces act as contracts that specify the operations that can be performed on the entities. The core layer does not contain any implementation details of the repositories, allowing them to be implemented in the infrastructure layer.
 
-### c-Implementation of Use Cases
+#### c-Implementation of Use Cases
 
 Use cases are the application-specific requirements that represent various actions or operations that the application can perform. The core layer contains the implementation of these use cases, which orchestrate the interactions between entities and repositories to achieve specific goals.
 
@@ -25,11 +25,11 @@ Use cases are the application-specific requirements that represent various actio
 
 In the infrastructure layer of ASP.NET Clean Architecture, we have the following components:
 
-### a-Implementation of Repositories
+#### a-Implementation of Repositories
 
 The infrastructure layer contains the actual implementations of the repository interfaces defined in the core layer. These implementations interact with data sources such as databases, web services, or file systems, to retrieve and persist data.
 
-### b-Services
+#### b-Services
 
 The infrastructure layer may also contain various services required for the application, such as email services, logging services (jwt authentication), or external integrations.
 
